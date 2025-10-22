@@ -6,14 +6,12 @@ import com.cafe.order.application.port.in.member.command.MemberWithdrawCommand;
 import com.cafe.order.domain.member.model.Member;
 import jakarta.validation.Valid;
 
-public interface MemberUseCase {
+public interface MemberCommandUseCase {
 
     Member signup(@Valid MemberSignupCommand command);
 
     void withdraw(@Valid MemberWithdrawCommand command);
 
     void cancelWithdrawal(@Valid MemberCancelWithdrawalCommand command);
-
-    Member findById(Long memberId);
 
 }

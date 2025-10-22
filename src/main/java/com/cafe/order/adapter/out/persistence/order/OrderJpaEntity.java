@@ -1,7 +1,6 @@
 package com.cafe.order.adapter.out.persistence.order;
 
 import com.cafe.order.adapter.out.persistence.common.BaseJpaEntity;
-import com.cafe.order.adapter.out.persistence.member.MemberJpaEntity;
 import com.cafe.order.domain.order.model.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -26,11 +25,11 @@ public class OrderJpaEntity extends BaseJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
-    private MemberJpaEntity member;
+    @Column(name = "member_id", nullable = false)
+    private Long memberId;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "order_id", nullable = false)
     private final List<OrderLineJpaEntity> orderLines = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

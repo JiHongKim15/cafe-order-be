@@ -15,17 +15,17 @@ public class OrderDomainService {
 
     public void validateOrderCreation(Member member, List<Product> products) {
         if (!member.isActive()) {
-            throw new BizException(ErrorCode.INVALID_REQUEST, "회원만 주문할 수 있습니다.");
+            throw new BizException(ErrorCode.ORDER_MEMBER_NOT_ACTIVE);
         }
 
         if (products == null || products.isEmpty()) {
-            throw new BizException(ErrorCode.INVALID_REQUEST, "주문할 상품이 없습니다.");
+            throw new BizException(ErrorCode.ORDER_EMPTY_PRODUCTS);
         }
     }
 
     public void validateOrderCancellation(Order order) {
         if (order.isCancelled()) {
-            throw new BizException(ErrorCode.INVALID_REQUEST, "이미 취소된 주문입니다.");
+            throw new BizException(ErrorCode.ORDER_ALREADY_CANCELLED);
         }
     }
 

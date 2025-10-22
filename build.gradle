@@ -30,7 +30,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
-	// Resilience4j - 타임아웃, 서킷 브레이커, 재시도 등
 	implementation 'io.github.resilience4j:resilience4j-spring-boot3:2.2.0'
 
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'

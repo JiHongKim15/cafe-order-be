@@ -5,7 +5,7 @@ import com.cafe.order.application.port.in.order.command.CreateOrderCommand;
 import com.cafe.order.domain.order.model.Order;
 import jakarta.validation.Valid;
 
-public interface OrderUseCase {
+public interface OrderCommandUseCase {
 
     Order createOrder(@Valid CreateOrderCommand command);
 

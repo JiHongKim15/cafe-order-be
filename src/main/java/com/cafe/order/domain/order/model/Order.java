@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public class Order {
     private Long id;
     private Long memberId;
-    private List<Long> productIds;
+    private List<OrderLine> orderLines;
     private OrderStatus status;
     private String paymentId;
     private LocalDateTime orderDateTime;
@@ -22,12 +21,12 @@ public class Order {
 
     public static Order create(
             Long memberId,
-            List<Long> productIds,
+            List<OrderLine> orderLines,
             String paymentId
     ) {
         return Order.builder()
                 .memberId(memberId)
-                .productIds(productIds)
+                .orderLines(orderLines)
                 .status(OrderStatus.CONFIRMED)
                 .paymentId(paymentId)
                 .orderDateTime(LocalDateTime.now())
@@ -43,7 +42,4 @@ public class Order {
         return this.status == OrderStatus.CANCELLED;
     }
 
-    public boolean isConfirmed() {
-        return this.status == OrderStatus.CONFIRMED;
-    }
 }

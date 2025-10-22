@@ -4,10 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
-/**
- * 외부 결제 API 클라이언트
- * 실제 외부 결제 시스템을 호출한다고 가정 (Mock)
- */
+
 @Component
 public class PaymentApiAdapter {
 

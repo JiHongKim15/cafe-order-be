@@ -1,10 +1,7 @@
 package com.cafe.order.adapter.out.persistence.order;
 
-import com.cafe.order.adapter.out.persistence.product.ProductJpaEntity;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "order_lines")
@@ -18,17 +15,12 @@ public class OrderLineJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-    private OrderJpaEntity order;
+    @Column(name = "order_id", nullable = false, insertable = false, updatable = false)
+    private Long orderId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    private ProductJpaEntity product;
+    @Column(name = "product_id", nullable = false)
+    private Long productId;
 
     @Column(nullable = false)
     private Integer quantity;
-
-    @Column(nullable = false)
-    private BigDecimal orderPrice;
 }

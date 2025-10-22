@@ -17,15 +17,18 @@ public enum ErrorCode {
     
     // 주문 관련 에러
     ORDER_NOT_FOUND("O001", "주문을 찾을 수 없습니다."),
+    ORDER_ALREADY_CANCELLED("O002", "이미 취소된 주문입니다."),
+    ORDER_EMPTY_PRODUCTS("O003", "주문할 상품이 없습니다."),
+    ORDER_MEMBER_NOT_ACTIVE("O004", "활성화된 회원만 주문할 수 있습니다."),
     
     // 상품 관련 에러
     PRODUCT_NOT_FOUND("P001", "상품을 찾을 수 없습니다."),
     PRODUCT_NOT_AVAILABLE("P002", "판매 중단된 상품입니다."),
     
     // 결제 관련 에러
+    PAYMENT_NOT_FOUND("PAY000", "결제 정보를 찾을 수 없습니다."),
     PAYMENT_FAILED("PAY001", "결제 처리에 실패했습니다."),
-    PAYMENT_CANCELLED("PAY002", "결제가 취소되었습니다."),
-    PAYMENT_TIMEOUT("PAY003", "결제 처리 시간이 초과되었습니다.");
+    PAYMENT_CANCELLED("PAY002", "결제가 취소되었습니다.");
 
     private final String code;
     private final String message;

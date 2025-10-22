@@ -1,5 +1,6 @@
 package com.cafe.order.application.port.in.order.command;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -11,6 +12,6 @@ public record CreateOrderCommand(
     @Positive(message = "회원 ID는 양수여야 합니다.")
     Long memberId,
 
-    @NotEmpty(message = "상품 ID 목록은 필수입니다.")
-    List<@NotNull @Positive Long> productIds
+    @NotEmpty(message = "주문 상품 목록은 필수입니다.")
+    List<@Valid OrderLineCommand> orderLines
 ) {}

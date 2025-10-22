@@ -1,6 +1,6 @@
 package com.cafe.order.application.service.member;
 
-import com.cafe.order.application.port.in.member.MemberUseCase;
+import com.cafe.order.application.port.in.member.MemberCommandUseCase;
 import com.cafe.order.application.port.in.member.command.MemberCancelWithdrawalCommand;
 import com.cafe.order.application.port.in.member.command.MemberSignupCommand;
 import com.cafe.order.application.port.in.member.command.MemberWithdrawCommand;
@@ -18,7 +18,7 @@ import org.springframework.validation.annotation.Validated;
 @RequiredArgsConstructor
 @Transactional
 @Validated
-public class MemberService implements MemberUseCase {
+public class MemberCommandService implements MemberCommandUseCase {
 
     private final MemberPort memberPort;
     private final MemberDomainService memberDomainService;
@@ -43,7 +43,7 @@ public class MemberService implements MemberUseCase {
 
         return memberPort.save(newMember);
     }
-    
+
     @Override
     public void withdraw(MemberWithdrawCommand command) {
         Member member = memberPort.findById(command.memberId())
@@ -66,12 +66,6 @@ public class MemberService implements MemberUseCase {
         member.cancelWithdrawal();
 
         memberPort.save(member);
-    }
-
-    @Override
-    public Member findById(Long memberId) {
-        return memberPort.findById(memberId)
-                .orElseThrow(() -> new BizException(ErrorCode.MEMBER_NOT_FOUND));
     }
 
     private void validateDuplicatePhoneNumber(String phoneNumber) {
