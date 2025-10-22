@@ -3,20 +3,44 @@
 **헥사고날 아키텍처**와 **도메인 주도 설계(DDD)**를 적용한 카페 주문 시스템 백엔드 프로젝트입니다.
 
 ## 📋 목차
-- [프로젝트 개요](#-프로젝트-개요)
+- [시작](#-시작)
 - [아키텍처 설계](#-아키텍처-설계)
 - [도메인 모델 설계](#-도메인-모델-설계)
 - [핵심 설계 결정사항](#-핵심-설계-결정사항)
-- [문제해결 전략](#-문제해결-전략)
-- [API 명세](#-api-명세)
-- [프로젝트 실행 방법](#-프로젝트-실행-방법)
+- [문제해결](#-문제해결)
+- [문서](#-문서)
+- [정리](#-정리)
 
----
 
-## 프로젝트 개요
 
-이 프로젝트는 **실무 수준의 설계 원칙과 패턴**을 적용하여 구현한 카페 주문 시스템입니다.
-단순한 CRUD를 넘어서 **확장 가능하고 유지보수가 용이한 구조**를 목표로 합니다.
+## 시작
+### JAR 파일로 실행
+
+```bash
+java -jar lib/order.jar
+```
+
+**실행 후 접속:**
+- API: http://localhost:8080
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+**상세 문서:**
+- **[API.md](./API.md)** - API 엔드포인트, 요청/응답 형식, 에러 코드
+- **[ERD.md](./ERD.md)** - 데이터베이스 설계, 테이블 구조, 관계도
+
+### 소스코드에서 빌드 및 실행
+
+```bash
+# 1. 빌드
+./gradlew clean bootJar
+
+# 2. 실행
+java -jar build/libs/order-0.0.1-SNAPSHOT.jar
+
+# 또는 Gradle로 바로 실행
+./gradlew bootRun
+```
+
 
 ### 개발 방향성과 의도
 
@@ -273,25 +297,18 @@ void validatePhoneNumber_Fail() {
 
 ---
 
-## 🔌 API 명세
+## 문서
 
-### 회원 API
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/members` | 회원 가입 |
-| DELETE | `/api/members/{memberId}` | 회원 탈퇴 |
-| POST | `/api/members/{memberId}/cancel-withdrawal` | 탈퇴 철회 |
+### API 명세서
+상세한 API 명세는 별도 문서를 참고하세요.
+- **[API.md](./API.md)** - 전체 API 엔드포인트, 요청/응답 형식, 에러 코드
 
-### 주문 API
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/orders` | 주문 생성 |
-| POST | `/api/orders/cancel` | 주문 취소 |
+### ERD (데이터베이스 설계)
+시스템의 데이터 구조와 관계는 별도 문서를 참고하세요.
+- **[ERD.md](./ERD.md)** - 테이블 구조, 관계, 인덱스 설계
 
----
-
-### Swagger UI 접속
-애플리케이션 실행 후 브라우저에서 접속:
+### Swagger UI
+애플리케이션 실행 후 인터랙티브 API 문서 확인:
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
