@@ -3,17 +3,18 @@
 **헥사고날 아키텍처**와 **도메인 주도 설계(DDD)**를 적용한 카페 주문 시스템 백엔드 프로젝트입니다.
 
 ## 📋 목차
-- [시작](#-시작)
+- [빠른 시작](#-빠른-시작)
 - [아키텍처 설계](#-아키텍처-설계)
 - [도메인 모델 설계](#-도메인-모델-설계)
 - [핵심 설계 결정사항](#-핵심-설계-결정사항)
 - [문제해결](#-문제해결)
-- [문서](#-문서)
 - [정리](#-정리)
 
 
+---
 
 ## 시작
+
 ### JAR 파일로 실행
 
 ```bash
@@ -24,7 +25,7 @@ java -jar lib/order.jar
 - API: http://localhost:8080
 - Swagger UI: http://localhost:8080/swagger-ui/index.html
 
-**상세 문서:**
+** 상세 문서:**
 - **[API.md](./API.md)** - API 엔드포인트, 요청/응답 형식, 에러 코드
 - **[ERD.md](./ERD.md)** - 데이터베이스 설계, 테이블 구조, 관계도
 
@@ -192,8 +193,8 @@ public interface MemberQueryUseCase {
 ```
 
 **장점**:
-- 단일 책임 원칙 (SRP) 준수
-- 읽기/쓰기 트랜잭션 분리 가능
+- 단일 책임 원칙 준수
+- 읽기/쓰기 분리 가능
 - 각 UseCase의 역할이 명확
 
 
@@ -297,23 +298,6 @@ void validatePhoneNumber_Fail() {
 
 ---
 
-## 문서
-
-### API 명세서
-상세한 API 명세는 별도 문서를 참고하세요.
-- **[API.md](./API.md)** - 전체 API 엔드포인트, 요청/응답 형식, 에러 코드
-
-### ERD (데이터베이스 설계)
-시스템의 데이터 구조와 관계는 별도 문서를 참고하세요.
-- **[ERD.md](./ERD.md)** - 테이블 구조, 관계, 인덱스 설계
-
-### Swagger UI
-애플리케이션 실행 후 인터랙티브 API 문서 확인:
-```
-http://localhost:8080/swagger-ui/index.html
-```
-
----
 
 ## 정리
 
@@ -342,7 +326,7 @@ public class Member {
     // JPA 어노테이션 없음
 }
 
-// JPA Entity - 영속성 관련 기술만 포함
+// JPA Entity - 관련 기술만 포함
 @Entity
 @Table(name = "members")
 public class MemberJpaEntity extends BaseJpaEntity {
