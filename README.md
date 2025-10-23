@@ -373,7 +373,6 @@ public record CreateOrderCommand(
 **결정**: 3가지 Mapper 구현
 - **WebMapper**: Request/Response ↔ Command/Domain
 - **PersistenceMapper**: Domain ↔ JpaEntity  
-- **Domain Factory Method**: Command → Domain
 
 **이유**:
 - 각 계층이 다른 계층의 DTO에 의존하지 않음
